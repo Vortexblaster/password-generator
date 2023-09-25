@@ -1,0 +1,36 @@
+Author: Vortex
+Password Validator
+
+Running instructions: Call python3 ./passwordvalidator.py in terminal or import it as a library to call from another program.
+
+Acknowledgements:
+	Documentation used: https://docs.python.org/3/library/secrets.html
+			    https://docs.python.org/3/library/random.html
+			    https://eclass.srv.ualberta.ca/pluginfile.php/9488045/mod_resource/content/5/password_validator.pdf
+
+Notes and Assumptions:
+	This program assumes that it will be passed a string when asked to validate a password, and that an integer will be passed when generating a password.
+	I have written some tests in the provided test file that can be ran with "make" or "make test". Doing so will generate 100000 ten character passwords 
+	and validate them. 
+
+	When running from a terminal, the user will be prompted to select whether they want to generate or validate a password. The program will not exit
+	until Q is passed at this step or an interrupt "Ctrl-C".
+
+	It is important to note that when generating extremely large passwords (>1000000) or many passwords (like in my test of 100000) the program may
+	take some time to complete.
+
+	Additionally, when generating a password I had some difficulty taking the subset of indexes that I required due to my use of the None type in
+	recording character occurances. This is why I used a for loop to remove the intersection of password and character_position. This is required
+	to prevent the removal of a character necessary for the password to be secure. Doing it this way prevents additional loops and increases speed.
+
+	For validate instead of four different checks to see what is contained at a given index in the password a regex could've been used. I elected not to 
+	because I believe this makes it more readable and the fact that I did not feel like learning regex.
+
+	Along these lines, I broke the four checks into a new function called character_type_position because I found that I used virtually the same code in
+	both validate and generate.
+
+	An interesting side effect of my generate implementation is that it is not necessary to call validate from within generate. I.e. a valid password will
+	always be created on the first iteration. This allows it to be imported without validate being imported. A prior iteration used recursion, which rapidly hit max recursion depth and only worked for small passwords
+	(<100).
+
+	Other than that, see my comments for more info on specific lines and what functions take and return.
