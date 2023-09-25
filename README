@@ -6,7 +6,6 @@ Running instructions: Call python3 ./passwordvalidator.py in terminal or import 
 Acknowledgements:
 	Documentation used: https://docs.python.org/3/library/secrets.html
 			    https://docs.python.org/3/library/random.html
-			    https://eclass.srv.ualberta.ca/pluginfile.php/9488045/mod_resource/content/5/password_validator.pdf
 
 Notes and Assumptions:
 	This program assumes that it will be passed a string when asked to validate a password, and that an integer will be passed when generating a password.
